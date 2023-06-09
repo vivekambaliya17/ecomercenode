@@ -1,0 +1,28 @@
+<form action="/addproduct" method="post">
+    <input type="text" placeholder="img" name="img">
+    <input type="text" placeholder="product name" name="productname">
+    <input type="text" placeholder="current price" name="currentprice">
+    <input type="text" placeholder="fake price" name="fakeprice">
+    <input type="text" placeholder="discount" name="discount">
+    <select name="catid" id="select">
+
+    </select>
+    <input type="submit">
+    <script>
+         let data = async () => {
+            let req = await fetch(`http://localhost:9999/catapi`)
+            let res = await req.json();
+            // console.log(img);
+            let temp = ``;
+            for (let i = 0; i < res.length; i++) {
+                let id = res[i]._id
+                let catname = res[i].catname
+                // console.log(img);
+                temp += ` <option value="${id}">${catname}</option>`
+            }
+            document.getElementById('select').innerHTML = temp
+            
+        }
+        data()
+    </script>
+</form>
