@@ -161,4 +161,13 @@ let viewproduct = async(req, res) =>{
     let view = await productschem.find()
     res.send(view)
 }
-module.exports = { home, signup, postsignup, login, loginauth, forgot, foremail, forotp, changepass , authgooglecallback ,catadd ,catapi , cataddpost ,details , cart ,profile ,addproductUI ,addproduct ,viewproduct }
+let catproduct = async(req, res) =>{
+    let {catname} = req.params
+    let cat = await catschem.findOne({catname:catname})
+    console.log(cat.id);
+    let view = await productschem.find({catid:cat.id})
+    console.log(view);
+    res.send(view)
+}
+
+module.exports = { home, signup, postsignup, login, loginauth, forgot, foremail, forotp, changepass , authgooglecallback ,catadd ,catapi , cataddpost ,details , cart ,profile ,addproductUI ,addproduct ,viewproduct ,catproduct }

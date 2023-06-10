@@ -226,8 +226,8 @@
                                     <div class="filter-block">
                                         <h4>Categoriy</h4>
                                         <ul>
-                                            <li>
-                                                <input type="checkbox" id="bags">
+                                            <li >
+                                                <input type="checkbox" id="bags" onclick="viewprod('Phone')">
                                                 <label for="bags">
                                                     <span class="checked"></span>
                                                     <span>Bags</span>
@@ -235,7 +235,7 @@
                                                 <span class="count">15</span>
                                             </li>
                                             <li>
-                                                <input type="checkbox" id="beauty">
+                                                <input type="checkbox" id="beauty" onclick="viewprod('car')">
                                                 <label for="beauty">
                                                     <span class="checked"></span>
                                                     <span>beauty</span>
@@ -243,7 +243,7 @@
                                                 <span class="count">15</span>
                                             </li>
                                             <li>
-                                                <input type="checkbox" id="clothing">
+                                                <input type="checkbox" id="clothing" onclick="viewprod('home & Kitchen')" >
                                                 <label for="clothing">
                                                     <span class="checked"></span>
                                                     <span>clothing</span>
@@ -251,7 +251,7 @@
                                                 <span class="count">15</span>
                                             </li>
                                             <li>
-                                                <input type="checkbox" id="Jawelars">
+                                                <input type="checkbox" id="Jawelars" onclick="viewprod('shoes')">
                                                 <label for="Jawelars">
                                                     <span class="checked"></span>
                                                     <span>Jawelars</span>
@@ -259,7 +259,7 @@
                                                 <span class="count">15</span>
                                             </li>
                                             <li>
-                                                <input type="checkbox" id="shose">
+                                                <input type="checkbox" id="shose"  onclick="viewprod('car')">
                                                 <label for="shose">
                                                     <span class="checked"></span>
                                                     <span>shose</span>
@@ -875,8 +875,17 @@
         })
     </script>
     <script>
+        let old = 'shoes'
+        async function viewprod(shoes){
+            console.log(shoes);
+            old = shoes
+            let req = await fetch(`http://localhost:9999/catproduct/${shoes}`)
+            let res = await req.json();
+            console.log(res);
+            data()
+        }
         let data = async () => {
-            let req = await fetch(`http://localhost:9999/viewproduct`)
+            let req = await fetch(`http://localhost:9999/catproduct/${old}`)
             let res = await req.json();
             console.log(res);
             let temp = ``;
@@ -920,7 +929,9 @@
             }
             document.getElementById('product-new').innerHTML = temp
         }  
+        
         data() 
+        
     </script>
 </body>
 </html>

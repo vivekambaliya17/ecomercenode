@@ -29,6 +29,16 @@
     .products.main .item {
         flex: 0 0 50%;
     }
+    .products.one .big-image {
+        margin-bottom: 2em;
+    }
+    .products.one .image-show {
+        height: 680px;
+    }
+    .products.one .thumbnail-show {
+        height: 160px;
+    }
+
 }
 @media (max-width: 639px) {
     .m-products{
@@ -63,6 +73,7 @@
         top: 0;
         right: 0;
       }
+    
 }
 @media screen and (min-width: 768px) {
     .products .price .current {
@@ -77,6 +88,10 @@
     .products.main .item {
         flex: 0 0 33.3333%;
     }
+     .products.one .row {
+        flex: 0 0 50% ;
+        width: 50% ;
+      }
 }
 @media screen and (min-width: 992px) {
     .container{
