@@ -1,6 +1,6 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
-const { home, signup, postsignup,  login , loginauth, foremail , forgot, forotp, changepass, authgooglecallback, catadd, catapi, cataddpost, details, cart, profile, addproductUI, addproduct, viewproduct, catproduct } = require('../controller/controller');
+const { home, signup, postsignup,  login , loginauth, foremail , forgot, forotp, changepass, authgooglecallback, catadd, catapi, cataddpost, details, cart, profile, addproductUI, addproduct, viewproduct, catproduct, oneproduct } = require('../controller/controller');
 const passport = require('passport');
 const auth = require('../middleware/authenticate');
 const singupschem = require('../model/singupschem');
@@ -11,7 +11,7 @@ Router.get("/signup",signup);
 Router.post('/signup',postsignup);
 Router.get("/login",login);
 Router.post('/login',passport.authenticate('local', { failureRedirect: '/login'  }) ,loginauth);
-Router.get("/product",auth,(req,res)=>{
+Router.get("/product",(req,res)=>{
     res.render('product')
 })
 // forgot password
@@ -32,10 +32,12 @@ Router.get('/catadd',catadd)
 Router.get('/catapi',catapi)
 Router.post('/catadd', cataddpost)
 Router.get('/details/:id',details)
+// Router.get('/product',product)
 Router.get('/addproduct', auth ,addproductUI)
 Router.post('/addproduct', auth ,addproduct)
 Router.get('/viewproduct',viewproduct)
 Router.get('/catproduct/:catname',catproduct)
+Router.get("/oneproduct/:id",oneproduct)
 // ----------------------------------------------------------------
 Router.get('/cart',auth , cart)
 Router.get('/profile' , profile)

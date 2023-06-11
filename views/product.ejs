@@ -19,7 +19,7 @@
 </head>
 <body>
     <div id="page" class="site page-category">
-
+      
         <aside class="site-off desktop-hide">
             <div class="off-canvas">
                 <div class="canvas-head flexitem">
@@ -657,7 +657,7 @@
                                             </div>  
                                         </div>
                                     </div>
-                                    <div class="item">
+                                    <div class="item" >
                                         <div class="media">
                                             <div class="thumbnail object-cover">
                                                 <a href="#">
@@ -688,7 +688,7 @@
                                         </div>
                                     </div>
                                     <!-- products -->
-                                </div>
+                                </div >
                                 <div class="load-more flexcenter"><a href="#" class="secondary-button">Load more</a></div>
                             </div>
                         </div>
@@ -895,11 +895,12 @@
                 let currentprice = res[i].currentprice
                 let discount = res[i].discount
                 let fakeprice = res[i].fakeprice
-                console.log(img);
+                let id = res[i]._id
+                console.log(id);
                 temp += `<div class="item">
                                         <div class="media">
                                             <div class="thumbnail object-cover">
-                                                <a href="#">
+                                                <a href="/single-product" onclick="node('${id}')">
                                                     <img src="${img}" alt="">
                                                 </a>
                                             </div>
@@ -931,7 +932,10 @@
         }  
         
         data() 
-        
+        function node(array) {
+            // console.log(array);
+            localStorage.setItem('id',JSON.stringify(array));
+        }
     </script>
 </body>
 </html>

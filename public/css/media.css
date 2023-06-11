@@ -92,6 +92,10 @@
         flex: 0 0 50% ;
         width: 50% ;
       }
+      .products.one .is-sticky , .is-sticky {
+        position: sticky;
+        top: 2em;
+      }
 }
 @media screen and (min-width: 992px) {
     .container{
@@ -333,5 +337,8 @@ nav .mega {
     }
     .products.main .item {
         flex: 0 0 25%;
+    }
+    .products.one .flexwrap > .row:last-child > .item {
+        padding-left: 2em;
     }
 }

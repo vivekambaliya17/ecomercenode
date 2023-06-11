@@ -234,7 +234,7 @@
                             <div class="products one">
                                 <div class="flexwrap">
                                     <div class="row">
-                                        <div class="item">
+                                        <div class="item is-sticky" >
                                             <div class="price">
                                                 <span class="discount">32%<br>OFF</span>
                                             </div>
@@ -357,11 +357,65 @@
                                                                                     <div class="review-rating rating">
                                                                                         <div class="stars"></div>
                                                                                     </div>
+                                                                                    <div class="review-title">
+                                                                                        <p>Awesome Product!</p>
+                                                                                    </div>
+                                                                                    <div class="review-text">
+                                                                                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore sunt at distinctio necessitatibus reprehenderit saepe iste tempore veniam perferendis voluptas.</p>
+                                                                                    </div>
+                                                                                </li>
+                                                                                <li class="item">
+                                                                                    <div class="review-form">
+                                                                                        <p class="person">review by piyush</p>
+                                                                                        <p class="mini-text">On 5/5/22</p>
+                                                                                    </div>
+                                                                                    <div class="review-rating rating">
+                                                                                        <div class="stars"></div>
+                                                                                    </div>
+                                                                                    <div class="review-title">
+                                                                                        <p>Awesome Product!</p>
+                                                                                    </div>
                                                                                     <div class="review-text">
                                                                                         <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore sunt at distinctio necessitatibus reprehenderit saepe iste tempore veniam perferendis voluptas.</p>
                                                                                     </div>
                                                                                 </li>
                                                                             </ul>
+                                                                            <div class="second-links">
+                                                                                <a href="#" class="view-all">View All reviews <i class="ri-arrow-right-line"></i></a>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="review-form" id="review-rorm">
+                                                                            <h4>Write a review</h4>
+                                                                            <div class="rating">
+                                                                                <p>Are you Setisfied enough?</p>
+                                                                                <div class="rate-this">
+                                                                                    <input type="radio" name="rating" id="star5">
+                                                                                    <label for="star5"><i class="ri-star-fill"></i></label>
+                                                                                    <input type="radio" name="rating" id="star4">
+                                                                                    <label for="star4"><i class="ri-star-fill"></i></label>
+                                                                                    <input type="radio" name="rating" id="star3">
+                                                                                    <label for="star3"><i class="ri-star-fill"></i></label>
+                                                                                    <input type="radio" name="rating" id="star2">
+                                                                                    <label for="star2"><i class="ri-star-fill"></i></label>
+                                                                                    <input type="radio" name="rating" id="star1">
+                                                                                    <label for="star1"><i class="ri-star-fill"></i></label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <form action="">
+                                                                                <p>
+                                                                                    <label for="">Name</label>
+                                                                                    <input type="text">
+                                                                                </p>
+                                                                                <p>
+                                                                                    <label for="">Summary</label>
+                                                                                    <input type="text">
+                                                                                </p>
+                                                                                <p>
+                                                                                    <label for="">Review</label>
+                                                                                    <textarea name="" id="" cols="30" rows="10"></textarea>
+                                                                                </p>
+                                                                                <p><a href="#" class="primary-button">Submit Review</a></p>
+                                                                            </form>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -559,6 +613,10 @@
                 swiper: productthumb,
             }
         })
+    </script>
+    <script>
+         let storage= JSON.parse(localStorage.getItem('id'));
+         console.log(storage);
     </script>
 </body>
 

@@ -136,10 +136,10 @@ let cataddpost = async(req,res)=>{
     let catdata = await catschem.create(req.body)
     res.send("done");
 }
-let details =(req,res)=>{
+let details = (req , res)=> {
     let {id} = req.params
     console.log(id)
-    res.send('done')
+    res.redirect('/product')
 }
 let cart = (req, res) =>{
     res.render('Cart')
@@ -164,10 +164,18 @@ let viewproduct = async(req, res) =>{
 let catproduct = async(req, res) =>{
     let {catname} = req.params
     let cat = await catschem.findOne({catname:catname})
-    console.log(cat.id);
+    // console.log(cat.id);
     let view = await productschem.find({catid:cat.id})
-    console.log(view);
+    // console.log(view);
     res.send(view)
 }
-
-module.exports = { home, signup, postsignup, login, loginauth, forgot, foremail, forotp, changepass , authgooglecallback ,catadd ,catapi , cataddpost ,details , cart ,profile ,addproductUI ,addproduct ,viewproduct ,catproduct }
+// let product = (req , res) =>{
+//     res.render('product')
+// }
+let oneproduct = async(req , res) => {
+    // let id = req.params.id
+    // let pro = await productschem.findById(id)
+    // console.log(pro);
+    return res.render('single-product')
+}
+module.exports = { home, signup, postsignup, login, loginauth, forgot, foremail, forotp, changepass , authgooglecallback ,catadd ,catapi , cataddpost ,details , cart ,profile ,addproductUI ,addproduct ,viewproduct ,catproduct , oneproduct }
