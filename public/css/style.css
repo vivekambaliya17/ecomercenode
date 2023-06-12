@@ -1097,6 +1097,9 @@ form.search button:hover{
     margin-left: auto;
     color: var(--light-text-color);
 }
+.filter-block span {
+    cursor: pointer;
+}
 :where(.filter-block:not(.pricing )) input {
     clip: rect(0,0,0,0);
     overflow: hidden;

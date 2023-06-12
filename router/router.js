@@ -5,6 +5,7 @@ const passport = require('passport');
 const auth = require('../middleware/authenticate');
 const singupschem = require('../model/singupschem');
 const catschem = require('../model/cat');
+const uploadIMG = require('../middleware/multer');
 const Router = express.Router();
 Router.get("/",home);
 Router.get("/signup",signup);
@@ -41,4 +42,15 @@ Router.get("/oneproduct/:id",oneproduct)
 // ----------------------------------------------------------------
 Router.get('/cart',auth , cart)
 Router.get('/profile' , profile)
+Router.get('/img',(req,res)=>{
+    res.render('img')
+})
+Router.get('/imgss',(req,res)=>{
+    res.render('imgtest')
+})
+Router.post('/img' ,uploadIMG, async(req,res)=>{
+    console.log(req.file.path);
+    // await ProductIMG.create(req.body.img)
+    res.send("img uplod")
+})
 module.exports=Router

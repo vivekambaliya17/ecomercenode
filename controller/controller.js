@@ -163,10 +163,11 @@ let viewproduct = async(req, res) =>{
 }
 let catproduct = async(req, res) =>{
     let {catname} = req.params
+    // if(catname == 1000){
+
+    // }
     let cat = await catschem.findOne({catname:catname})
-    // console.log(cat.id);
     let view = await productschem.find({catid:cat.id})
-    // console.log(view);
     res.send(view)
 }
 // let product = (req , res) =>{
