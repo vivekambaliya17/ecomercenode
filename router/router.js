@@ -6,6 +6,7 @@ const auth = require('../middleware/authenticate');
 const singupschem = require('../model/singupschem');
 const catschem = require('../model/cat');
 const uploadIMG = require('../middleware/multer');
+const productschem = require('../model/productSchema');
 const Router = express.Router();
 Router.get("/",home);
 Router.get("/signup",signup);
@@ -32,13 +33,22 @@ Router.get('/single-product',(req, res)=>{
 Router.get('/catadd',catadd)
 Router.get('/catapi',catapi)
 Router.post('/catadd', cataddpost)
-Router.get('/details/:id',details)
+Router.get('/details',details)
 // Router.get('/product',product)
 Router.get('/addproduct', auth ,addproductUI)
-Router.post('/addproduct', auth ,addproduct)
+Router.post('/addproduct', auth,uploadIMG ,addproduct)
 Router.get('/viewproduct',viewproduct)
-Router.get('/catproduct/:catname',catproduct)
+Router.get('/catproduct/',catproduct)
 Router.get("/oneproduct/:id",oneproduct)
+Router.get('/singleapi/:key' , async(req, res)=>{
+    const key = req.params.key
+    let value = await productschem.findById(key)
+    res.send(value)
+})
+Router.get('/qurey',(req,res)=>{
+    console.log(req.query);
+    res.send("done")
+})
 // ----------------------------------------------------------------
 Router.get('/cart',auth , cart)
 Router.get('/profile' , profile)
@@ -53,4 +63,7 @@ Router.post('/img' ,uploadIMG, async(req,res)=>{
     // await ProductIMG.create(req.body.img)
     res.send("img uplod")
 })
+// Router.get('/addtocart',(req,res)=>{
+
+// })
 module.exports=Router

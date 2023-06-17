@@ -227,23 +227,23 @@
                                         <h4>Categoriy</h4>
                                         <ul>
                                             <li>
-                                                <span onclick="viewprod('Phone')">Bags</span>
+                                                <span onclick="viewprod('Phone')">Phone</span>
                                                 <span class="count">15</span>
                                             </li>
                                             <li>
-                                                <span  onclick="viewprod('car')" >beauty</span>
+                                                <span  onclick="viewprod('car')" >car</span>
                                                 <span class="count">15</span>
                                             </li>
                                             <li>
-                                                <span onclick="viewprod('home & Kitchen')">clothing</span>
+                                                <span onclick="viewprod('home & Kitchen')">home & Kitchen</span>
                                                 <span class="count">15</span>
                                             </li>
                                             <li>
-                                                <span onclick="viewprod('shoes')">Jawelars</span>
+                                                <span onclick="viewprod('shoes')">shoes</span>
                                                 <span class="count">15</span>
                                             </li>
                                             <li>
-                                                <span  onclick="viewprod('car')">shose</span>
+                                                <span  onclick="viewprod('car')">car</span>
                                                 <span class="count">15</span>
                                             </li>
                                         </ul>
@@ -257,19 +257,19 @@
                                                 <span class="count">15</span>
                                             </li>
                                             <li>
-                                                <span>₹1,000 - ₹5,000</span>
+                                                <span onclick="viewprice('5000')">₹1,000 - ₹5,000</span>
                                                 <span class="count">15</span>
                                             </li>
                                             <li>
-                                                <span>₹5,000 - ₹10,000</span>
+                                                <span onclick="viewprice('10000')">₹5,000 - ₹10,000</span>
                                                 <span class="count">15</span>
                                             </li>
                                             <li>
-                                                <span>₹10,000 - ₹20,000</span>
+                                                <span onclick="viewprice('20000')">₹10,000 - ₹20,000</span>
                                                 <span class="count">15</span>
                                             </li>
                                             <li>
-                                                <span>Over ₹20,000</span>
+                                                <span onclick="viewprice('40000')">Over ₹20,000</span>
                                                 <span class="count">15</span>
                                             </li>
                                         </ul>
@@ -278,23 +278,23 @@
                                         <h4>Discount</h4>
                                         <ul>
                                             <li>
-                                                <span>10% Off or more</span>
+                                                <span onclick="disc('10')">10% Off or more</span>
                                                 <span class="count">15</span>
                                             </li>
                                             <li>
-                                                <span>20% Off or more</span>
+                                                <span onclick="disc('20')">20% Off or more</span>
                                                 <span class="count">15</span>
                                             </li>
                                             <li>
-                                                <span>35% Off or more</span>
+                                                <span onclick="disc('35')">35% Off or more</span>
                                                 <span class="count">15</span>
                                             </li>
                                             <li>
-                                                <span>50% Off or more</span>
+                                                <span onclick="disc('50')">50% Off or more</span>
                                                 <span class="count">15</span>
                                             </li>
                                             <li>
-                                                <span>60% Off or more</span>
+                                                <span onclick="disc('60')">60% Off or more</span>
                                                 <span class="count">15</span>
                                             </li>
                                         </ul>
@@ -339,15 +339,13 @@
                                             </div>
                                             <div class="item-sortir">
                                                 <div class="label">
-                                                    <span class="mobile-hide">Sort by default</span>
+                                                    <span class="mobile-hide">Short by : Bestselling</span>
                                                     <div class="desktop-hide">Default</div>
                                                     <i class="ri-arrow-down-s-line"></i>
                                                 </div>
                                                 <ul>
-                                                    <li>Default</li>
-                                                    <li>Product Name</li>
-                                                    <li>Price</li>
-                                                    <li>Brand</li>
+                                                    <li>Short by : Price: Low to High</li>
+                                                    <li>Short by : Price: High to Low</li>
                                                 </ul>
                                             </div>
                                             <div class="item-perpage mobile-hide">
@@ -771,22 +769,33 @@
     </script>
     <script>
         let old = 'shoes'
-        async function viewprod(shoes){
-            console.log(shoes);
-            old = shoes
-            let req = await fetch(`http://localhost:9999/catproduct/${shoes}`)
-            let res = await req.json();
-            console.log(res);
+        let price ='0'
+        let discounts ='0'
+        let catNAME = JSON.parse(localStorage.getItem('catname'));
+        // console.log(carNAME);
+        old = catNAME
+        async function viewprice(key){
+            price = key
             data()
         }
-        async function viewprice(price){
-            // let req = await fetch(`http://localhost:9999/catproduct/${price}`)
-            // let res = await req.json();
+        async function viewprod(shoes){
+           
+            old = shoes
+            data()
         }
+        async function disc(Discount){
+         discounts = Discount
+            // old = shoes
+            data()
+        }
+        
         let data = async () => {
-            let req = await fetch(`http://localhost:9999/catproduct/${old}`)
+            console.log(old);
+            console.log(price);
+            console.log(discounts);
+            let req = await fetch(`http://localhost:9999/catproduct/?catname=${old}&price=${price}&discounts=${discounts}`)
             let res = await req.json();
-            console.log(res);
+            // console.log(res);
             let temp = ``;
             for (let i = 0; i < res.length; i++) {
                 let img = res[i].img
@@ -795,7 +804,7 @@
                 let discount = res[i].discount
                 let fakeprice = res[i].fakeprice
                 let id = res[i]._id
-                console.log(id);
+                // console.log(id);
                 temp += `<div class="item">
                                         <div class="media">
                                             <div class="thumbnail object-cover">
@@ -829,7 +838,6 @@
             }
             document.getElementById('product-new').innerHTML = temp
         }  
-        
         data() 
         function node(array) {
             localStorage.setItem('id',JSON.stringify(array));

@@ -44,34 +44,33 @@
                         </div>
                         <div class="right">
                             <ul class="flexitem main-links">
-                                <li><a href="signup">sign Up</a></li>
-                                <li><a href="#">My Account <span class="icon-small"><i
-                                                class="ri-arrow-down-s-line"></i></span></a>
-                                    <ul>
-                                        <li class="current"><a href="#">MY PROFILE</a></li>
-                                        <li><a href="/login">LOG IN</a></li>
-                                        <li><a href="#">LOG OUT</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="#">Order Tracking</a></li>
-                                <li><a href="#">USD <span class="icon-small"><i
-                                                class="ri-arrow-down-s-line"></i></span></a>
-                                    <ul>
-                                        <li class="current"><a href="#">INR</a></li>
-                                        <li><a href="#">USD</a></li>
-                                        <li><a href="#">EURO</a></li>
-                                        <li><a href="#">GBP</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="#">English <span class="icon-small"> <i
-                                                class="ri-arrow-down-s-line"></i></span></a>
-                                    <ul>
-                                        <li class="current"><a href="#">English</a></li>
-                                        <li><a href="#">Gujrati</a></li>
-                                        <li><a href="#">Hindi</a></li>
-                                        <li><a href="#">spaanish</a></li>
-                                    </ul>
-                                </li>
+                                <% if(remove=="authenticate" ){ %>
+                                    <li><a href="/signup">log out</a></li>
+                                    <li><a href="/profile">profile</a></li>
+                                    <% } %>
+                                        <% if(remove=="notauthenticate" ){ %>
+                                            <li><a href="/signup">sign Up</a></li>
+                                            <li><a href="/login">Log in </a></li>
+                                            <% } %>
+                                                <li><a href="#">Order Tracking</a></li>
+                                                <li><a href="#">USD <span class="icon-small"><i
+                                                                class="ri-arrow-down-s-line"></i></span></a>
+                                                    <ul>
+                                                        <li class="current"><a href="#">INR</a></li>
+                                                        <li><a href="#">USD</a></li>
+                                                        <li><a href="#">EURO</a></li>
+                                                        <li><a href="#">GBP</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li><a href="#">English <span class="icon-small"> <i
+                                                                class="ri-arrow-down-s-line"></i></span></a>
+                                                    <ul>
+                                                        <li class="current"><a href="#">English</a></li>
+                                                        <li><a href="#">Gujrati</a></li>
+                                                        <li><a href="#">Hindi</a></li>
+                                                        <li><a href="#">spaanish</a></li>
+                                                    </ul>
+                                                </li>
                             </ul>
                         </div>
                     </div>
@@ -415,34 +414,11 @@
                 </div>
             </div>
         </main>
-        <div class="banners">
+        <!-- <div class="banners">
             <div class="container">
                 <div class="wrapper">
                     <div class="column">
                         <div class="products-categories flexwrap">
-                            <div class="row" id="newcategory">
-
-                            </div>
-                            <div class="row">
-                                <div class="item">
-                                    <div class="image">
-                                        <img src="/assets/banner/procat2.jpg" alt="">
-                                    </div>
-                                    <div class="content main-links">
-                                        <h4>Beauty</h4>
-                                        <ul class="flexcol">
-                                            <li><a href="#">makeup</a></li>
-                                            <li><a href="#">Skin care</a></li>
-                                            <li><a href="#">hair care</a></li>
-                                            <li><a href="#">Skin care</a></li>
-                                            <li><a href="#">hair care</a></li>
-                                        </ul>
-                                        <div class="second-links">
-                                            <a href="" class="view-all">View All<i class="ri-arrow-right-line"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                             <div class="row">
                                 <div class="item">
                                     <div class="image">
@@ -463,37 +439,33 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="item">
-                                    <div class="image">
-                                        <img src=" /assets/banner/procat3.jpg" alt="">
-                                    </div>
-                                    <div class="content main-links">
-                                        <h4>Beauty</h4>
-                                        <ul class="flexcol">
-                                            <li><a href="#">makeup</a></li>
-                                            <li><a href="#">Skin care</a></li>
-                                            <li><a href="#">hair care</a></li>
-                                            <li><a href="#">Skin care</a></li>
-                                            <li><a href="#">hair care</a></li>
-                                        </ul>
-                                        <div class="second-links">
-                                            <a href="" class="view-all">View All<i class="ri-arrow-right-line"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <!--  -->
+        <div class="features">
+            <div class="container">
+                <div class="wrapper">
+                    <div class="column">
+                        <div class="sectop flexitem">
+                            <h2><span class="circle"></span><span>Futures Product</span></h2>
+                        </div>
+                        <div id="Category" class="products main flexwrap">
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
+        <!--  -->
         <div class="container">
             <section class="product-section" class="section-p1">
                 <h1>Featured Products</h1>
                 <p>Summer Collection New Morden Design</p>
-                <div class="pro-collection" id="Category">
+                <div class="pro-collection">
 
 
                     <!-- <div class="product-cart">
@@ -1246,19 +1218,28 @@
                 let id = res[i]._id
                 let catname = res[i].catname
                 console.log(img);
-                temp += ` <a href="/details/${id}" class="main-product"><div class="m-products" id="m-products" onClick="newclick(${id})">
-                        
-                        <div class="product-cart">
-                          <img src="${img}"/>
-                          <h4>${catname}</h4>
+                temp += `<div class="item" style="box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.02); border: 1px solid #ebebeb; border-radius: 25px; padding: 13px;">
+                        <div class="media" style="border-radius: 25px;">
+                            <div class="thumbnail object-cover">
+                                <a href="/details" onclick="CATname('${catname}')" style="overflow: hidden;">
+                                    <img style="border-radius: 25px;" src="${img}" alt="">
+                                </a>
+                            </div>
                         </div>
-                    </div></a>`
+                        <div class="content">
+                            <h3 style="text-align: center;" class="main-links"><a href="#">${catname}</a></h3>
+                        </div>
+                    </div>`;
             }
             document.getElementById('Category').innerHTML = temp
-            
+
+        }
+        function CATname(array) {
+            console.log(array);
+            localStorage.setItem('catname', JSON.stringify(array));
         }
         data()
-        
+
     </script>
 </body>
 

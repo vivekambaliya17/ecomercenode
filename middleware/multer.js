@@ -8,6 +8,6 @@ const store = multer.diskStorage({
 })
 const uploadIMG = multer({
     storage:store,
-}).single("img")
+}).single("img" )
 
 module.exports = uploadIMG

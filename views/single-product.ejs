@@ -180,7 +180,7 @@
                                 <li><a href="#" class="iscart">
                                         <div class="icon-large">
                                             <i class="ri-shopping-cart-line"></i>
-                                            <div class="fly-item"><span class="item-number">0</span></div>
+                                            <div class="fly-item"><span class="item-number" id="numbercount">0</span></div>
                                         </div>
                                         <div class="icon-text">
                                             <div class="mini-text">Total</div>
@@ -227,30 +227,30 @@
                             <ul class="flexitem">
                                 <li><a href="#">Home /</a></li>
                                 <li><a href="#">Shoes /</a></li>
-                                <li> Men Slip On Shose Cursal with Arch Support </li>
+                                <li id="proname"> Men Slip On Shose Cursal with Arch Support </li>
                             </ul>
                         </div>
                         <div class="column">
                             <div class="products one">
                                 <div class="flexwrap">
                                     <div class="row">
-                                        <div class="item is-sticky" >
+                                        <div class="item is-sticky">
                                             <div class="price">
-                                                <span class="discount">32%<br>OFF</span>
+                                                <span class="discount"><span id="discount"></span>%<br>OFF</span>
                                             </div>
                                             <div class="big-image">
                                                 <div class="big-image-wrapper swiper-wrapper">
                                                     <div class="image-show swiper-slide">
-                                                        <a href="#"><img src="/assets/products/shoe1.jpg" alt=""></a>
+                                                        <img id="img1" src="/assets/products/shoe1.jpg" alt="">
                                                     </div>
                                                     <div class="image-show swiper-slide">
-                                                        <a href="#"><img src="/assets/products/shoe1-1.jpg" alt=""></a>
+                                                        <img id="img2" src="/assets/products/shoe1-1.jpg" alt="">
                                                     </div>
                                                     <div class="image-show swiper-slide">
-                                                        <a href="#"><img src="/assets/products/shoe1-2.jpg" alt=""></a>
+                                                        <img id="img3" src="/assets/products/shoe1-2.jpg" alt="">
                                                     </div>
                                                     <div class="image-show swiper-slide">
-                                                        <a href="#"><img src="/assets/products/shoe1-3.jpg" alt=""></a>
+                                                        <img id="img4" src="/assets/products/shoe1-3.jpg" alt="">
                                                     </div>
                                                 </div>
                                                 <div class="swiper-button-next"></div>
@@ -259,16 +259,16 @@
                                             <div thumbSlider class="small-image">
                                                 <ul class="small-image-wrapper flexitem swiper-wrapper">
                                                     <li class="thumbnail-show swiper-slide">
-                                                        <img src="/assets/products/shoe1.jpg" alt="">
+                                                        <img id="Img1" src="/assets/products/shoe1.jpg" alt="">
                                                     </li>
                                                     <li class="thumbnail-show swiper-slide">
-                                                        <img src="/assets/products/shoe1-1.jpg" alt="">
+                                                        <img id="Img2" src="/assets/products/shoe1-1.jpg" alt="">
                                                     </li>
                                                     <li class="thumbnail-show swiper-slide">
-                                                        <img src="/assets/products/shoe1-2.jpg" alt="">
+                                                        <img id="Img3" src="/assets/products/shoe1-2.jpg" alt="">
                                                     </li>
                                                     <li class="thumbnail-show swiper-slide">
-                                                        <img src="/assets/products/shoe1-3.jpg" alt="">
+                                                        <img id="Img4" src="/assets/products/shoe1-3.jpg" alt="">
                                                     </li>
                                                 </ul>
                                             </div>
@@ -276,7 +276,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="item">
-                                            <h1>Men slip on casual with arch support insolres</h1>
+                                            <h1 id="prodname">Men slip on casual with arch support insolres</h1>
                                             <div class="content">
                                                 <div class="rating">
                                                     <div class="stars"></div>
@@ -288,18 +288,18 @@
                                                     <span class="sku mini-text">sku-881</span>
                                                 </div>
                                                 <div class="price">
-                                                    <span class="current">$50.89</span>
-                                                    <span class="normal">$1000.99</span>
+                                                    <span class="current" >$<span id="currentprice">45.90</span></span>
+                                                    <span class="normal">$  <span id="fakeprice">100.99</span></span>
                                                 </div>
                                                 <!-- .colors>p+.variant>form>p*3 -->
                                                 <div class="actions">
                                                     <div class="qty-control flexitem">
-                                                        <button class="minus circle">-</button>
-                                                        <input type="text" value="1">
-                                                        <button class="plus circle">+</button>
+                                                        <button class="minus circle" onclick="decreaseNumber()">-</button>
+                                                        <input type="text" value="1" id="text-box">
+                                                        <button class="plus circle" onclick="increaseNumber()">+</button>
                                                     </div>
                                                     <div class="button-cart">
-                                                        <button class="primary-button">Add to Cart</button>
+                                                        <button class="primary-button" onclick="Addcart()">Add to Cart</button>
                                                     </div>
                                                     <div class="wish-share">
                                                         <ul class="flexitem second-links">
@@ -321,21 +321,27 @@
                                                         <li class="has-child expand">
                                                             <a href="#0" class="icon-small">Imfomation</a>
                                                             <ul class="content">
-                                                                <li><span>Brand</span> <span>miks</span></li>
-                                                                <li><span>Activity</span> <span>Running</span></li>
-                                                                <li><span>Material</span> <span>Fleece</span></li>
-                                                                <li><span>Gender</span> <span>Men</span></li>
+                                                                <li><span>Brand</span> <span id="brand">miks</span></li>
+                                                                <li><span>Activity</span> <span id="activity">Running</span></li>
+                                                                <li><span>Material</span> <span id="material">Fleece</span></li>
+                                                                <li><span>Gender</span> <span id="gender">Men</span></li>
                                                             </ul>
                                                         </li>
                                                         <li class="has-child">
                                                             <a href="#0" class="icon-small">Details</a>
                                                             <div class="content">
-                                                                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deleniti ab sit repellat dolor architecto accusantium.</p>
-                                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut quia quas nam deserunt ipsa perspiciatis possimus ex in facilis rem ratione vero, alias voluptatum illum?</p>
+                                                                <p id="detailone">Lorem ipsum dolor sit, amet consectetur adipisicing
+                                                                    elit. Deleniti ab sit repellat dolor architecto
+                                                                    accusantium.</p>
+                                                                <p id="detailtwo">Lorem ipsum dolor sit amet consectetur adipisicing
+                                                                    elit. Ut quia quas nam deserunt ipsa perspiciatis
+                                                                    possimus ex in facilis rem ratione vero, alias
+                                                                    voluptatum illum?</p>
                                                             </div>
                                                         </li>
                                                         <li class="has-child ">
-                                                            <a href="#" class="icon-small">reviews<span class="mini-text">2.3k</span></a>
+                                                            <a href="#" class="icon-small">reviews<span
+                                                                    class="mini-text">2.3k</span></a>
                                                             <div class="content">
                                                                 <div class="reviews">
                                                                     <h4>Custemers reviews</h4>
@@ -345,14 +351,17 @@
                                                                                 <span class="rate-sum">4.9</span>
                                                                                 <span>2,323 reviews</span>
                                                                             </div>
-                                                                            <a href="#" class="secondary-button">Write reviews</a>
+                                                                            <a href="#" class="secondary-button">Write
+                                                                                reviews</a>
                                                                         </div>
                                                                         <div class="review-block-body">
                                                                             <ul>
                                                                                 <li class="item">
                                                                                     <div class="review-form">
-                                                                                        <p class="person">review by piyush</p>
-                                                                                        <p class="mini-text">On 5/5/22</p>
+                                                                                        <p class="person">review by
+                                                                                            piyush</p>
+                                                                                        <p class="mini-text">On 5/5/22
+                                                                                        </p>
                                                                                     </div>
                                                                                     <div class="review-rating rating">
                                                                                         <div class="stars"></div>
@@ -361,13 +370,21 @@
                                                                                         <p>Awesome Product!</p>
                                                                                     </div>
                                                                                     <div class="review-text">
-                                                                                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore sunt at distinctio necessitatibus reprehenderit saepe iste tempore veniam perferendis voluptas.</p>
+                                                                                        <p>Lorem ipsum dolor sit amet
+                                                                                            consectetur, adipisicing
+                                                                                            elit. Labore sunt at
+                                                                                            distinctio necessitatibus
+                                                                                            reprehenderit saepe iste
+                                                                                            tempore veniam perferendis
+                                                                                            voluptas.</p>
                                                                                     </div>
                                                                                 </li>
                                                                                 <li class="item">
                                                                                     <div class="review-form">
-                                                                                        <p class="person">review by piyush</p>
-                                                                                        <p class="mini-text">On 5/5/22</p>
+                                                                                        <p class="person">review by
+                                                                                            piyush</p>
+                                                                                        <p class="mini-text">On 5/5/22
+                                                                                        </p>
                                                                                     </div>
                                                                                     <div class="review-rating rating">
                                                                                         <div class="stars"></div>
@@ -376,12 +393,20 @@
                                                                                         <p>Awesome Product!</p>
                                                                                     </div>
                                                                                     <div class="review-text">
-                                                                                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore sunt at distinctio necessitatibus reprehenderit saepe iste tempore veniam perferendis voluptas.</p>
+                                                                                        <p>Lorem ipsum dolor sit amet
+                                                                                            consectetur, adipisicing
+                                                                                            elit. Labore sunt at
+                                                                                            distinctio necessitatibus
+                                                                                            reprehenderit saepe iste
+                                                                                            tempore veniam perferendis
+                                                                                            voluptas.</p>
                                                                                     </div>
                                                                                 </li>
                                                                             </ul>
                                                                             <div class="second-links">
-                                                                                <a href="#" class="view-all">View All reviews <i class="ri-arrow-right-line"></i></a>
+                                                                                <a href="#" class="view-all">View All
+                                                                                    reviews <i
+                                                                                        class="ri-arrow-right-line"></i></a>
                                                                             </div>
                                                                         </div>
                                                                         <div class="review-form" id="review-rorm">
@@ -389,16 +414,26 @@
                                                                             <div class="rating">
                                                                                 <p>Are you Setisfied enough?</p>
                                                                                 <div class="rate-this">
-                                                                                    <input type="radio" name="rating" id="star5">
-                                                                                    <label for="star5"><i class="ri-star-fill"></i></label>
-                                                                                    <input type="radio" name="rating" id="star4">
-                                                                                    <label for="star4"><i class="ri-star-fill"></i></label>
-                                                                                    <input type="radio" name="rating" id="star3">
-                                                                                    <label for="star3"><i class="ri-star-fill"></i></label>
-                                                                                    <input type="radio" name="rating" id="star2">
-                                                                                    <label for="star2"><i class="ri-star-fill"></i></label>
-                                                                                    <input type="radio" name="rating" id="star1">
-                                                                                    <label for="star1"><i class="ri-star-fill"></i></label>
+                                                                                    <input type="radio" name="rating"
+                                                                                        id="star5">
+                                                                                    <label for="star5"><i
+                                                                                            class="ri-star-fill"></i></label>
+                                                                                    <input type="radio" name="rating"
+                                                                                        id="star4">
+                                                                                    <label for="star4"><i
+                                                                                            class="ri-star-fill"></i></label>
+                                                                                    <input type="radio" name="rating"
+                                                                                        id="star3">
+                                                                                    <label for="star3"><i
+                                                                                            class="ri-star-fill"></i></label>
+                                                                                    <input type="radio" name="rating"
+                                                                                        id="star2">
+                                                                                    <label for="star2"><i
+                                                                                            class="ri-star-fill"></i></label>
+                                                                                    <input type="radio" name="rating"
+                                                                                        id="star1">
+                                                                                    <label for="star1"><i
+                                                                                            class="ri-star-fill"></i></label>
                                                                                 </div>
                                                                             </div>
                                                                             <form action="">
@@ -412,9 +447,12 @@
                                                                                 </p>
                                                                                 <p>
                                                                                     <label for="">Review</label>
-                                                                                    <textarea name="" id="" cols="30" rows="10"></textarea>
+                                                                                    <textarea name="" id="" cols="30"
+                                                                                        rows="10"></textarea>
                                                                                 </p>
-                                                                                <p><a href="#" class="primary-button">Submit Review</a></p>
+                                                                                <p><a href="#"
+                                                                                        class="primary-button">Submit
+                                                                                        Review</a></p>
                                                                             </form>
                                                                         </div>
                                                                     </div>
@@ -615,8 +653,73 @@
         })
     </script>
     <script>
-         let storage= JSON.parse(localStorage.getItem('id'));
-         console.log(storage);
+        function decreaseNumber() {
+            let itemval = document.getElementById('text-box')
+            // console.log(itemval.value);
+            if(itemval.value <= 0) {
+                itemval.value = 0
+            }
+            else {
+                itemval.value = parseInt(itemval.value)-1;
+            }
+        }
+        function increaseNumber(){
+            let itemval = document.getElementById('text-box')
+            // console.log(itemval.value);
+            if(itemval.value >= 5) {
+                itemval.value = 5
+                alert("max 5 allowed")
+            }
+            else {
+                itemval.value = parseInt(itemval.value)+1;
+            }
+        }
+        let storage = JSON.parse(localStorage.getItem('id'));
+        console.log(storage);
+        sendid(storage)
+        
+        async function sendid() {
+            try {
+                let req = await fetch(`http://localhost:9999/singleapi/${storage}`)
+                let res = await req.json();
+                console.log(res);  
+                   document.getElementById('proname').innerHTML=res.productname
+                   document.getElementById('prodname').innerHTML=res.productname
+                   document.getElementById('currentprice').innerHTML=res.currentprice
+                   document.getElementById('fakeprice').innerHTML=res.fakeprice
+                   document.getElementById('brand').innerHTML=res.brand
+                   document.getElementById('img1').src=res.img
+                   document.getElementById('Img1').src=res.img
+                   document.getElementById('img2').src=res.img2
+                   document.getElementById('Img2').src=res.img2
+                   document.getElementById('img3').src=res.img3
+                   document.getElementById('Img3').src=res.img3
+                   document.getElementById('img4').src=res.img4
+                   document.getElementById('Img4').src=res.img4
+                   document.getElementById('discount').innerHTML=res.discount
+                   document.getElementById('detailone').innerText=res.detailone
+                   document.getElementById('detailtwo').innerHTML=res.detailtwo
+                   document.getElementById('material').innerHTML=res.material
+                   document.getElementById('activity').innerHTML=res.activity
+                   document.getElementById('gender').innerHTML=res.gender
+
+            } catch (error) {
+                console.log(error);
+            }
+
+        }
+        function Addcart() {
+           let a = document.getElementById('numbercount').innerHTML
+           let b= a+1
+            console.log(b);
+            // if(a ){
+
+            // }
+            // for (let i = 0; i < array.length; i++) {
+            //     const element = array[i];
+                
+            // }
+        }
     </script>
 </body>
 

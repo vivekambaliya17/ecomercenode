@@ -5,7 +5,7 @@ const catschem = require('../model/cat');
 const productschem = require('../model/productSchema');
 require('dotenv').config()
 let home = (req, res) => {
-    res.render('index')
+    res.render('index', {remove:"notauthenticate"} )
 }
 let signup = (req, res) => {
 
@@ -48,7 +48,9 @@ let login = (req, res) => {
     res.render('login')
 }
 let loginauth = (req, res) => {
-    res.render('index')
+    
+    // console.log(req.session.passport.user);
+    res.render('index' , {remove:"authenticate"})
 }
 // forgot password
 let forgot = (req, res) => {
@@ -128,7 +130,7 @@ let catadd = (req,res)=>{
 }
 let catapi = async(req,res)=>{
     let data = await catschem.find()
-    console.log(data);
+    // console.log(data);
     res.send(data);
 }
 let cataddpost = async(req,res)=>{
@@ -136,9 +138,9 @@ let cataddpost = async(req,res)=>{
     let catdata = await catschem.create(req.body)
     res.send("done");
 }
+// render not working 
 let details = (req , res)=> {
-    let {id} = req.params
-    console.log(id)
+    
     res.redirect('/product')
 }
 let cart = (req, res) =>{
@@ -152,6 +154,8 @@ let addproductUI = (req, res) =>{
     res.render('addproduct')
 }
 let addproduct = async(req, res) =>{
+    console.log(req.body);
+    console.log(req.session.passport.user);
     req.body.userid = req.session.passport.user
     console.log(req.body.userid);
     await productschem.create(req.body)
@@ -162,13 +166,44 @@ let viewproduct = async(req, res) =>{
     res.send(view)
 }
 let catproduct = async(req, res) =>{
-    let {catname} = req.params
-    // if(catname == 1000){
-
-    // }
+    let {catname ,price , discounts} =req.query
+    console.log(catname + price ,discounts)
+    
+    // console.log(catname);
+    // console.log(price);
     let cat = await catschem.findOne({catname:catname})
-    let view = await productschem.find({catid:cat.id})
-    res.send(view)
+    let view = await productschem.find({catid:cat.id})        
+   
+    if( price == 0 & discounts == 0) {
+        console.log("1");
+        return res.send(view)
+    }
+     if(price == 1000) {
+        console.log("2");
+         let product=view.filter((ele)=>ele.currentprice < 1000)
+        return res.send(product)
+    }
+     if(price == 5000) {
+        console.log("3");
+        let product=view.filter((ele)=>ele.currentprice < 5000)
+        return res.send(product)
+    }
+     if(price == 10000) {
+        console.log("4");
+        let product=view.filter((ele)=>ele.currentprice < 10000)
+
+        return res.send(product)
+    }
+     if(price == 20000) {
+        console.log("5");
+        let product=view.filter((ele)=>ele.currentprice < 20000)
+        return res.send(product)
+    }
+     if(price == 40000) {
+        console.log("6");
+        let product=view.filter((ele)=>ele.currentprice < 40000)
+        return res.send(product)
+    }
 }
 // let product = (req , res) =>{
 //     res.render('product')
