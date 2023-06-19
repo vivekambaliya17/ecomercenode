@@ -180,7 +180,8 @@
                                 <li><a href="#" class="iscart">
                                         <div class="icon-large">
                                             <i class="ri-shopping-cart-line"></i>
-                                            <div class="fly-item"><span class="item-number" id="numbercount">0</span></div>
+                                            <div class="fly-item"><span class="item-number" id="numbercount">0</span>
+                                            </div>
                                         </div>
                                         <div class="icon-text">
                                             <div class="mini-text">Total</div>
@@ -288,18 +289,21 @@
                                                     <span class="sku mini-text">sku-881</span>
                                                 </div>
                                                 <div class="price">
-                                                    <span class="current" >$<span id="currentprice">45.90</span></span>
-                                                    <span class="normal">$  <span id="fakeprice">100.99</span></span>
+                                                    <span class="current">$<span id="currentprice">45.90</span></span>
+                                                    <span class="normal">$ <span id="fakeprice">100.99</span></span>
                                                 </div>
                                                 <!-- .colors>p+.variant>form>p*3 -->
                                                 <div class="actions">
                                                     <div class="qty-control flexitem">
-                                                        <button class="minus circle" onclick="decreaseNumber()">-</button>
+                                                        <button class="minus circle"
+                                                            onclick="decreaseNumber()">-</button>
                                                         <input type="text" value="1" id="text-box">
-                                                        <button class="plus circle" onclick="increaseNumber()">+</button>
+                                                        <button class="plus circle"
+                                                            onclick="increaseNumber()">+</button>
                                                     </div>
                                                     <div class="button-cart">
-                                                        <button class="primary-button" onclick="Addcart()">Add to Cart</button>
+                                                        <button class="primary-button" id="addtocart">Add to
+                                                            Cart</button>
                                                     </div>
                                                     <div class="wish-share">
                                                         <ul class="flexitem second-links">
@@ -322,18 +326,23 @@
                                                             <a href="#0" class="icon-small">Imfomation</a>
                                                             <ul class="content">
                                                                 <li><span>Brand</span> <span id="brand">miks</span></li>
-                                                                <li><span>Activity</span> <span id="activity">Running</span></li>
-                                                                <li><span>Material</span> <span id="material">Fleece</span></li>
-                                                                <li><span>Gender</span> <span id="gender">Men</span></li>
+                                                                <li><span>Activity</span> <span
+                                                                        id="activity">Running</span></li>
+                                                                <li><span>Material</span> <span
+                                                                        id="material">Fleece</span></li>
+                                                                <li><span>Gender</span> <span id="gender">Men</span>
+                                                                </li>
                                                             </ul>
                                                         </li>
                                                         <li class="has-child">
                                                             <a href="#0" class="icon-small">Details</a>
                                                             <div class="content">
-                                                                <p id="detailone">Lorem ipsum dolor sit, amet consectetur adipisicing
+                                                                <p id="detailone">Lorem ipsum dolor sit, amet
+                                                                    consectetur adipisicing
                                                                     elit. Deleniti ab sit repellat dolor architecto
                                                                     accusantium.</p>
-                                                                <p id="detailtwo">Lorem ipsum dolor sit amet consectetur adipisicing
+                                                                <p id="detailtwo">Lorem ipsum dolor sit amet consectetur
+                                                                    adipisicing
                                                                     elit. Ut quia quas nam deserunt ipsa perspiciatis
                                                                     possimus ex in facilis rem ratione vero, alias
                                                                     voluptatum illum?</p>
@@ -656,70 +665,92 @@
         function decreaseNumber() {
             let itemval = document.getElementById('text-box')
             // console.log(itemval.value);
-            if(itemval.value <= 0) {
+            if (itemval.value <= 0) {
                 itemval.value = 0
             }
             else {
-                itemval.value = parseInt(itemval.value)-1;
+                itemval.value = parseInt(itemval.value) - 1;
             }
         }
-        function increaseNumber(){
+        function increaseNumber() {
             let itemval = document.getElementById('text-box')
             // console.log(itemval.value);
-            if(itemval.value >= 5) {
+            if (itemval.value >= 5) {
                 itemval.value = 5
                 alert("max 5 allowed")
             }
             else {
-                itemval.value = parseInt(itemval.value)+1;
+                itemval.value = parseInt(itemval.value) + 1;
             }
         }
         let storage = JSON.parse(localStorage.getItem('id'));
         console.log(storage);
         sendid(storage)
-        
+
         async function sendid() {
             try {
                 let req = await fetch(`http://localhost:9999/singleapi/${storage}`)
                 let res = await req.json();
-                console.log(res);  
-                   document.getElementById('proname').innerHTML=res.productname
-                   document.getElementById('prodname').innerHTML=res.productname
-                   document.getElementById('currentprice').innerHTML=res.currentprice
-                   document.getElementById('fakeprice').innerHTML=res.fakeprice
-                   document.getElementById('brand').innerHTML=res.brand
-                   document.getElementById('img1').src=res.img
-                   document.getElementById('Img1').src=res.img
-                   document.getElementById('img2').src=res.img2
-                   document.getElementById('Img2').src=res.img2
-                   document.getElementById('img3').src=res.img3
-                   document.getElementById('Img3').src=res.img3
-                   document.getElementById('img4').src=res.img4
-                   document.getElementById('Img4').src=res.img4
-                   document.getElementById('discount').innerHTML=res.discount
-                   document.getElementById('detailone').innerText=res.detailone
-                   document.getElementById('detailtwo').innerHTML=res.detailtwo
-                   document.getElementById('material').innerHTML=res.material
-                   document.getElementById('activity').innerHTML=res.activity
-                   document.getElementById('gender').innerHTML=res.gender
+                console.log(res);
+                document.getElementById('proname').innerHTML = res.productname
+                document.getElementById('prodname').innerHTML = res.productname
+                document.getElementById('currentprice').innerHTML = res.currentprice
+                document.getElementById('fakeprice').innerHTML = res.fakeprice
+                document.getElementById('brand').innerHTML = res.brand
+                document.getElementById('img1').src = res.img
+                document.getElementById('Img1').src = res.img
+                document.getElementById('img2').src = res.img2
+                document.getElementById('Img2').src = res.img2
+                document.getElementById('img3').src = res.img3
+                document.getElementById('Img3').src = res.img3
+                document.getElementById('img4').src = res.img4
+                document.getElementById('Img4').src = res.img4
+                document.getElementById('discount').innerHTML = res.discount
+                document.getElementById('detailone').innerText = res.detailone
+                document.getElementById('detailtwo').innerHTML = res.detailtwo
+                document.getElementById('material').innerHTML = res.material
+                document.getElementById('activity').innerHTML = res.activity
+                document.getElementById('gender').innerHTML = res.gender
 
+                document.getElementById("addtocart").addEventListener("click", () => Addcart(res))
             } catch (error) {
                 console.log(error);
             }
 
         }
-        function Addcart() {
-           let a = document.getElementById('numbercount').innerHTML
-           let b= a+1
-            console.log(b);
-            // if(a ){
+        function onlordno() {
+            let productNo = localStorage.getItem('cartNumber')
+            if (productNo) {
+                document.getElementById('numbercount').innerText = productNo
 
-            // }
-            // for (let i = 0; i < array.length; i++) {
-            //     const element = array[i];
-                
-            // }
+            }
         }
+        function Addcart(data) {
+            console.log(data);
+            fetch("http://localhost:9999/addtocart",{
+                method: "POST",
+                headers:{"Content-Type":"application/json"},
+                body:JSON.stringify(data),
+            })
+            .then((response)=>response.json())
+            .then((response=>console.log(response)))
+            let productNo = localStorage.getItem('cartNumber')
+
+
+            productNo = parseInt(productNo)
+            if (productNo) {
+
+                localStorage.setItem('cartNumber', productNo + 1)
+                document.getElementById('numbercount').innerText = productNo + 1
+            }
+            else {
+                localStorage.setItem('cartNumber', 1)
+                document.getElementById('numbercount').innerText = 1
+            }
+            console.log(productNo);
+
+        }
+        onlordno()
     </script>
 </body>
 

@@ -5,7 +5,7 @@ const catschem = require('../model/cat');
 const productschem = require('../model/productSchema');
 require('dotenv').config()
 let home = (req, res) => {
-    res.render('index', {remove:"notauthenticate"} )
+    res.render('index' )
 }
 let signup = (req, res) => {
 
@@ -50,7 +50,7 @@ let login = (req, res) => {
 let loginauth = (req, res) => {
     
     // console.log(req.session.passport.user);
-    res.render('index' , {remove:"authenticate"})
+    res.render('index')
 }
 // forgot password
 let forgot = (req, res) => {
@@ -214,4 +214,10 @@ let oneproduct = async(req , res) => {
     // console.log(pro);
     return res.render('single-product')
 }
-module.exports = { home, signup, postsignup, login, loginauth, forgot, foremail, forotp, changepass , authgooglecallback ,catadd ,catapi , cataddpost ,details , cart ,profile ,addproductUI ,addproduct ,viewproduct ,catproduct , oneproduct }
+let logout = (req,res)=>{
+    req.logout((err)=>{
+        console.log(err)
+    })
+    res.render('index')
+}
+module.exports = { home, signup, postsignup, login, loginauth, forgot, foremail, forotp, changepass , authgooglecallback ,catadd ,catapi , cataddpost ,details , cart ,profile ,addproductUI ,addproduct ,viewproduct ,catproduct , oneproduct , logout }

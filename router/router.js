@@ -1,6 +1,6 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
-const { home, signup, postsignup,  login , loginauth, foremail , forgot, forotp, changepass, authgooglecallback, catadd, catapi, cataddpost, details, cart, profile, addproductUI, addproduct, viewproduct, catproduct, oneproduct } = require('../controller/controller');
+const { home, signup, postsignup,  login , loginauth, foremail , forgot, forotp, changepass, authgooglecallback, catadd, catapi, cataddpost, details, cart, profile, addproductUI, addproduct, viewproduct, catproduct, oneproduct, logout } = require('../controller/controller');
 const passport = require('passport');
 const auth = require('../middleware/authenticate');
 const singupschem = require('../model/singupschem');
@@ -10,6 +10,7 @@ const productschem = require('../model/productSchema');
 const Router = express.Router();
 Router.get("/",home);
 Router.get("/signup",signup);
+Router.get("/logout",logout);
 Router.post('/signup',postsignup);
 Router.get("/login",login);
 Router.post('/login',passport.authenticate('local', { failureRedirect: '/login'  }) ,loginauth);
@@ -66,4 +67,15 @@ Router.post('/img' ,uploadIMG, async(req,res)=>{
 // Router.get('/addtocart',(req,res)=>{
 
 // })
+Router.post('/addtocart',async(req,res)=>{
+    let arr = [];
+    let value = await productschem.findById(req.body._id)
+    if(!value){
+        arr.push(req.body)
+    }
+    // let value =req.body
+
+    console.log(value);
+    res.send(req.body)
+})
 module.exports=Router
