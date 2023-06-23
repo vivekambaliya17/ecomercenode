@@ -172,9 +172,18 @@ let catproduct = async(req, res) =>{
     // console.log(catname);
     // console.log(price);
     let cat = await catschem.findOne({catname:catname})
-    let view = await productschem.find({catid:cat.id})        
-   
+    let view = await productschem.find({catid:cat.id})
+    if (discounts == "lth") {
+        view = await productschem.find({catid:cat.id}).sort({"currentprice": 1})
+    }
+    if (discounts == "htl") {
+        view = await productschem.find({catid:cat.id}).sort({"currentprice": -1})
+    }
     if( price == 0 & discounts == 0) {
+        console.log("1");
+        return res.send(view)
+    }
+    if( price == 0 ) {
         console.log("1");
         return res.send(view)
     }
@@ -201,7 +210,7 @@ let catproduct = async(req, res) =>{
     }
      if(price == 40000) {
         console.log("6");
-        let product=view.filter((ele)=>ele.currentprice < 40000)
+        let product=view.filter((ele)=>ele.currentprice > 0)
         return res.send(product)
     }
 }
@@ -220,4 +229,19 @@ let logout = (req,res)=>{
     })
     res.render('index')
 }
-module.exports = { home, signup, postsignup, login, loginauth, forgot, foremail, forotp, changepass , authgooglecallback ,catadd ,catapi , cataddpost ,details , cart ,profile ,addproductUI ,addproduct ,viewproduct ,catproduct , oneproduct , logout }
+let singleapi = async (req, res) => {
+    const key = req.params.key
+    let value = await productschem.findById(key)
+    res.send(value)
+}
+let imge = (req, res) => {
+    res.render('img')
+}
+let imgtest = (req, res) => {
+    res.render('imgtest')
+}
+let imguplod = async (req, res) => {
+    console.log(req.file.path);
+    res.send("img uplod")
+}
+module.exports = { home, signup, postsignup, login, loginauth, forgot, foremail, forotp, changepass , authgooglecallback ,catadd ,catapi , cataddpost ,details , cart ,profile ,addproductUI ,addproduct ,viewproduct ,catproduct , oneproduct , logout , singleapi , imge , imgtest , imguplod}

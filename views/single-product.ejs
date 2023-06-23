@@ -674,7 +674,6 @@
         }
         function increaseNumber() {
             let itemval = document.getElementById('text-box')
-            // console.log(itemval.value);
             if (itemval.value >= 5) {
                 itemval.value = 5
                 alert("max 5 allowed")
@@ -735,11 +734,8 @@
             .then((response)=>response.json())
             .then((response=>console.log(response)))
             let productNo = localStorage.getItem('cartNumber')
-
-
             productNo = parseInt(productNo)
             if (productNo) {
-
                 localStorage.setItem('cartNumber', productNo + 1)
                 document.getElementById('numbercount').innerText = productNo + 1
             }
@@ -748,7 +744,6 @@
                 document.getElementById('numbercount').innerText = 1
             }
             console.log(productNo);
-
         }
         onlordno()
     </script>

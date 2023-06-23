@@ -5,7 +5,8 @@ let schema = new mongoose.Schema({
     username:String,
     email:String,
     Pnumber:String,
-    password:String
+    password:String,
+    cart:[]
 })
 let singupschem = mongoose.model("ecomerce",schema);
 module.exports =singupschem
