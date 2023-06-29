@@ -180,7 +180,8 @@
                                 <li><a href="#" class="iscart">
                                         <div class="icon-large">
                                             <i class="ri-shopping-cart-line"></i>
-                                            <div class="fly-item"><span class="item-number">0</span></div>
+                                            <div class="fly-item"><span class="item-number" id="numbercount">0</span>
+                                            </div>
                                         </div>
                                         <div class="icon-text">
                                             <div class="mini-text">Total</div>
@@ -327,7 +328,7 @@
                                                     </tr>
                                                 </tbody>
                                             </table>
-                                            <a href="#" class="secondary-button">Chekout</a>
+                                            <a href="#"   class="secondary-button">Chekout</a>
                                         </div>
                                     </div>
                                 </div>
@@ -495,6 +496,7 @@
     </script>
     <!-- // back-end -->
     <script>
+
         async function cart() {
             let req = await fetch(`http://localhost:9999/addtocart`)
             let res = await req.json();
@@ -502,23 +504,23 @@
             console.log(res);
             let temp = ``
             for (let i = 0; i < element.length; i++) {
-                console.log(element[i]);
+                console.log(element[i].qty);
                 temp += `<tr>
                     <td class="flexitem">
                         <div class="thumbnail object-cover">
-                            <a href="#"><img src="${element[i].img}" alt=""></a>
+                            <a href="/single-product" onclick="node('${element[i]._id}')"><img src="${element[i].img}" alt=""></a>
                         </div>
                         <div class="content">
-                            <strong><a href="#">${element[i].productname}</a></strong>
+                            <strong><a href="/single-product" onclick="node('${element[i]._id}')">${element[i].productname}</a></strong>
                             <p>brand : ${element[i].brand}</p>
                         </div>
                     </td>
                     <td>$${element[i].currentprice}</td>
                     <td>
                         <div class="qty-control flexitem">
-                            <button class="minus" onclick="decreaseNumber()">-</button>
-                            <input type="text" value="1"  id="text-box">
-                                <button class="plus" onclick="increaseNumber()">+</button>
+                            <button class="minus" onclick="decreaseNumber(e)">-</button>
+                            <input type="text" value="${element[i].qty}"  id="textbox">
+                            <button class="plus" onclick="increaseNumber()">+</button>
                         </div>
                     </td>
                     <td>$599.99</td>
@@ -529,30 +531,45 @@
             }
         }
         cart()
-        async function deleteitem(i){
-            console.log(i);
+        async function deleteitem(i) {
+            // console.log(i);
             await fetch(`http://localhost:9999/deleteid/${i}`)
             cart()
+            let productNo = localStorage.getItem('cartNumber')
+            localStorage.setItem('cartNumber', productNo - 1)
+            count()
         }
-        function decreaseNumber() {
-            let itemval = document.getElementById('text-box')
-            // console.log(itemval.value);
-            if (itemval.value <= 0) {
-                itemval.value = 0
-            }
-            else {
-                itemval.value = parseInt(itemval.value) - 1;
-            }
+        function node(array) {
+            localStorage.setItem('id', JSON.stringify(array));
+        }
+        function count() {
+            let productNo = localStorage.getItem('cartNumber')
+            document.getElementById('numbercount').innerText = productNo
+        }
+        count()
+        function decreaseNumber(e) {
+            e.preventDefault()
+            // let itemval = document.getElementById('text-box')
+            // // console.log(itemval.value);
+            // if (itemval.value <= 0) {
+            //     itemval.value = 0
+            // }
+            // else {
+            //     itemval.value = parseInt(itemval.value) - 1;
+            // }
         }
         function increaseNumber() {
-            let itemval = document.getElementById('text-box')
-            if (itemval.value >= 5) {
-                itemval.value = 5
-                alert("max 5 allowed")
-            }
-            else {
-                itemval.value = parseInt(itemval.value) + 1;
-            }
+            // e.preventDefault()
+            event.preventDefault();
+            console.log("aaa");
+            // let itemval = document.getElementById('text-box')
+            // if (itemval.value >= 5) {
+            //     itemval.value = 5
+            //     alert("max 5 allowed")
+            // }
+            // else {
+            //     itemval.value = parseInt(itemval.value) + 1;
+            // }
         }
     </script>
 </body>

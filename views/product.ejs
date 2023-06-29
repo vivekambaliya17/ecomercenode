@@ -210,7 +210,8 @@
                             <div class="search-box">
                                 <form action="" class="search">
                                     <span class="icon-large"><i class="ri-search-line"></i></span>
-                                    <input type="search" placeholder="search for products" id="search" onkeyup="return searching()">
+                                    <input type="search" placeholder="search for products" id="search"
+                                        onkeyup="return searching()">
                                     <button type="submit">Search</button>
                                 </form>
                             </div>
@@ -710,6 +711,7 @@
                     </div>
                 </div>
             </div>
+            <!-- <div id="productnew"></div> -->
         </footer>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
@@ -853,8 +855,8 @@
                                     </div>`
             }
             document.getElementById('product-new').innerHTML = temp
-            document.getElementById('page-title').innerText =old
-            document.getElementById('productName').innerText =old
+            document.getElementById('page-title').innerText = old
+            document.getElementById('productName').innerText = old
         }
         data()
         function node(array) {
@@ -877,10 +879,61 @@
             document.getElementById('select').innerHTML = templet
         }
         product()
-
-        function searching(){
+       
+        async function searching() {
             var search = document.getElementById('search').value;
             console.log(search);
+            let req = await fetch(`http://localhost:9999/allproduct`)
+            let res = await req.json();
+            // console.log(res);
+            var data = res.filter((v, i) => {
+                if (res[i].productname.toLowerCase().match(search.toLowerCase())) {
+                    console.log(res[i]);
+                    return res[i];
+                }
+            })
+            let html = ``;
+            for (let i = 0; i < data.length; i++) {
+                let img = data[i].img
+                let productname = data[i].productname
+                let currentprice = data[i].currentprice
+                let discount = data[i].discount
+                let fakeprice = data[i].fakeprice
+                let id = data[i]._id
+                const element = data[i];
+                html += `<div class="item">
+                    <div class="media">
+                        <div class="thumbnail object-cover">
+                            <a href="/single-product" onclick="node('${id}')">
+                                <img src="${img}" alt="">
+                            </a>
+                        </div>
+                        <div class="hoverable">
+                            <ul>
+                                <li class="active"><a href="#"><i class="ri-heart-line"></i></a></li>
+                                <li><a href="#"><i class="ri-eye-line"></i></a></li>
+                                <li><a href="#"><i class="ri-shuffle-line"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="discount circle flexcenter">
+                            <span>${discount}%</span>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <div class="rating">
+                            <div class="stars"></div>
+                            <span class="mini-text">(2,155)</span>
+                        </div>
+                        <h3 class="main-links"><a href="#">${productname}</a></h3>
+                        <div class="price">
+                            <span class="current">$${currentprice}.99</span>
+                            <span class="normal mini-text">$${fakeprice}.98</span>
+                        </div>
+                    </div>
+                </div>`
+            }
+            document.getElementById('product-new').innerHTML = html
+
         }
     </script>
 </body>

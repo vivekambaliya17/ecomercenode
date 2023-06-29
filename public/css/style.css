@@ -1690,3 +1690,8 @@ input[type="range"]::-webkit-slider-thumb {
 .dpt-head .mini-text {
     color: var(--white-color);
 }
+
+
+.features {
+    margin-top: 60px;
+}
