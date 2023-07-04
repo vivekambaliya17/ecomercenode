@@ -37,18 +37,18 @@
                     <div class="wrapper flexitem">
                         <div class="left">
                             <ul class="flexitem main-links">
-                                <li><a href="#">blog</a></li>
+                                <!-- <li><a href="#">blog</a></li>
                                 <li><a href="#">featured products</a></li>
-                                <li><a href="#">Wishlist</a></li>
+                                <li><a href="#">Wishlist</a></li> -->
                             </ul>
                         </div>
                         <div class="right">
                             <ul class="flexitem main-links">
                                 <li><a href="/logout">log out</a></li>
-                                <li><a href="/profile">profile</a></li>
+                                <li><a href="/myproduct">profile</a></li>
                                 <li><a href="/signup">sign Up</a></li>
                                 <li><a href="/login">Log in </a></li>
-                                <li><a href="#">Order Tracking</a></li>
+                                <!-- <li><a href="#">Order Tracking</a></li> -->
                                 <li><a href="#">USD <span class="icon-small"><i
                                                 class="ri-arrow-down-s-line"></i></span></a>
                                     <ul>
@@ -81,9 +81,9 @@
                             <div class="logo"><a href="/"><span class="circle"></span>.store</a></div>
                             <nav class="mobile-hide">
                                 <ul class="flexitem second-links">
-                                    <li><a href="#">home</a></li>
-                                    <li><a href="#">shop</a></li>
-                                    <li class="has-child"><a href="#">women <div class="icon-small"><i
+                                    <li><a href="/">home</a></li>
+                                    <li><a href="/details" onclick="CATname('smartphones')">smartphones</a></li>
+                                    <li class="has-child"><a href="/details" onclick="CATname('laptops')">laptops <div class="icon-small"><i
                                                     class="ri-arrow-down-s-line"></i></div></a>
                                         <div class="mega">
                                             <div class="container">
@@ -157,9 +157,9 @@
                                             </div>
                                         </div>
                                     </li>
-                                    <li><a href="#">men</a></li>
+                                    <li><a href="/details" onclick="CATname('furniture')">furniture</a></li>
                                     <li>
-                                        <a href="#">sports
+                                        <a href="/details" onclick="CATname('Kurta')">Kurta
                                             <div class="fly-item"><span>New!</span></div>
                                         </a>
                                     </li>
@@ -175,7 +175,8 @@
                                 <li><a href="/cart" class="iscart">
                                         <div class="icon-large">
                                             <i class="ri-shopping-cart-line"></i>
-                                            <div class="fly-item"><span class="item-number">0</span></div>
+                                            <div class="fly-item"><span class="item-number" id="numbercount">0</span>
+                                            </div>
                                         </div>
                                         <div class="icon-text">
                                             <div class="mini-text">Total</div>
@@ -202,7 +203,7 @@
                                 <div class="dpt-menu">
                                     <ul class="second-links">
                                         <li class="has-child beauty">
-                                            <a href="/details" onclick="CATname('smartphones')" >
+                                            <a href="/details" onclick="CATname('smartphones')">
                                                 <div class="icon-large">
                                                     <i class="ri-bear-smile-line"></i>
                                                 </div>
@@ -221,7 +222,7 @@
                                             </ul>
                                         </li>
                                         <li class="has-child electronic">
-                                            <a href="/details" onclick="CATname('fragrances')" >
+                                            <a href="/details" onclick="CATname('fragrances')">
                                                 <div class="icon-large">
                                                     <i class="ri-bluetooth-connect-line"></i>
                                                 </div>
@@ -240,7 +241,7 @@
                                             </ul>
                                         </li>
                                         <li class="has-child fashion">
-                                            <a href="/details" onclick="CATname('groceries')" >
+                                            <a href="/details" onclick="CATname('groceries')">
 
                                                 <div class="icon-large">
                                                     <i class="ri-t-shirt-air-line"></i>
@@ -260,7 +261,7 @@
                                             </ul>
                                         </li>
                                         <li>
-                                            <a href="/details" onclick="CATname('laptops')" >
+                                            <a href="/details" onclick="CATname('laptops')">
                                                 <div class="icon-large">
                                                     <i class="ri-shirt-line"></i>
                                                 </div>
@@ -268,7 +269,7 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/details" onclick="CATname('furniture')" >
+                                            <a href="/details" onclick="CATname('furniture')">
                                                 <div class="icon-large">
                                                     <i class="ri-user-5-line"></i>
                                                 </div>
@@ -276,7 +277,7 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/details" onclick="CATname('Kurta')" >
+                                            <a href="/details" onclick="CATname('Kurta')">
                                                 <div class="icon-large">
                                                     <i class="ri-user-6-line"></i>
                                                 </div>
@@ -284,7 +285,7 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/details" onclick="CATname('man-watch')" >
+                                            <a href="/details" onclick="CATname('man-watch')">
                                                 <div class="icon-large">
                                                     <i class="ri-heart-pulse-line"></i>
                                                 </div>
@@ -626,8 +627,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row products mini">
-                                <div class="item">
+                            <div class="row products mini " id="productlimit">
+                                <!-- <div class="item">
                                     <div class="media">
                                         <div class="thumbnail object-cover">
                                             <a href="#">
@@ -758,10 +759,10 @@
                                             <p>Free Shipping</p>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
-                            <div class="row products mini">
-                                <div class="item">
+                            <div class="row products mini" id="productlimit4">
+                                <!-- <div class="item">
                                     <div class="media">
                                         <div class="thumbnail object-cover">
                                             <a href="#">
@@ -900,7 +901,7 @@
                                             <p>Free Shipping</p>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>
@@ -908,7 +909,7 @@
             </div>
         </div>
         <!--  -->
-        <div class="features">
+        <!-- <div class="features">
             <div class="container">
                 <div class="wrapper">
                     <div class="column">
@@ -1047,7 +1048,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <footer>
             <div class="newsletter">
                 <div class="container">
@@ -1214,7 +1215,7 @@
                 let img = res[i].img
                 let id = res[i]._id
                 let catname = res[i].catname
-                console.log(img);
+                // console.log(img);
                 temp += `<div class="item ITEM" style="box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.02); border: 1px solid #ebebeb; border-radius: 25px; padding: 13px;">
                         <div class="media" style="border-radius: 25px;">
                             <div class="thumbnail object-cover">
@@ -1232,11 +1233,102 @@
 
         }
         function CATname(array) {
-            console.log(array);
+            // console.log(array);
             localStorage.setItem('catname', JSON.stringify(array));
         }
         data()
+        async function alldata() {
+            let req = await fetch(`http://localhost:9999/limitproduct/4`)
+            let res = await req.json();
+            let Temp = ``;
+            for (let i = 0; i < res.length; i++) {
+                let img = res[i]
+                console.log(img);
+                Temp += ` <div class="item">
+                    <div class="media">
+                        <div class="thumbnail object-cover">
+                            <a href="/single-product" onclick="node('${res[i]._id}')">
+                                <img src="${res[i].img}" alt="">
+                            </a>
+                        </div>
+                        <div class="hoverable">
+                            <ul>
+                                <li class="active"><a href="#"><i class="ri-heart-line"></i></a></li>
+                                <li><a href="#"><i class="ri-eye-line"></i></a></li>
+                                <li><a href="#"><i class="ri-shuffle-line"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="discount circle flexcenter"><span>${res[i].discount}%</span></div>
+                    </div>
+                    <div class="content">
+                        <h3 class="main-links"><a href="/single-product" onclick="node('${res[i]._id}')">${res[i].productname}</a></h3>
+                        <div class="rating">
+                            <div class="stars"></div>
+                            <span class="mini-text">(2,55)</span>
+                        </div>
+                        <div class="price">
+                            <span class="current">$${res[i].currentprice}.99</span>
+                            <span class="normal mini-text">$${res[i].fakeprice}.98</span>
+                        </div>
+                        <div class="mini-text">
+                            <p>2975 sold</p>
+                            <p>Free Shipping</p>
+                        </div>
+                    </div>
+                </div>`
+            }
+            document.getElementById('productlimit').innerHTML = Temp
+        }
+        alldata()
+        async function fourdata() {
+            let req = await fetch(`http://localhost:9999/limitproduct/8`)
+            let res = await req.json();
+            let Temp = ``;
+            for (let i = 0; i < res.length; i++) {
+                let img = res[i].img
+                console.log(img);
+                Temp += ` <div class="item">
+                    <div class="media">
+                        <div class="thumbnail object-cover">
+                            <a href="/single-product" onclick="node('${res[i]._id}')">
+                                <img src="${img}" alt="">
+                            </a>
+                        </div>
+                        <div class="hoverable">
+                            <ul>
+                                <li class="active"><a href="#"><i class="ri-heart-line"></i></a></li>
+                                <li><a href="#"><i class="ri-eye-line"></i></a></li>
+                                <li><a href="#"><i class="ri-shuffle-line"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="discount circle flexcenter"><span>${res[i].discount}%</span></div>
+                    </div>
+                    <div class="content">
+                        <h3 class="main-links"><a href="/single-product" onclick="node('${res[i]._id}')">${res[i].productname}</a></h3>
+                        <div class="rating">
+                            <div class="stars"></div>
+                            <span class="mini-text">(2,55)</span>
+                        </div>
+                        <div class="price">
+                            <span class="current">$${res[i].currentprice}.99</span>
+                            <span class="normal mini-text">$${res[i].fakeprice}.98</span>
+                        </div>
+                        <div class="mini-text">
+                            <p>2975 sold</p>
+                            <p>Free Shipping</p>
+                        </div>
+                    </div>
+                </div>`
+            }
+            document.getElementById('productlimit4').innerHTML = Temp
+        }
+        fourdata()
+        let productNo = localStorage.getItem('cartNumber')
+        document.getElementById('numbercount').innerText = productNo
 
+        function node(array) {
+            localStorage.setItem('id', JSON.stringify(array));
+        }
     </script>
 </body>
 

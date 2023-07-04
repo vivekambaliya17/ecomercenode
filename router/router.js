@@ -1,6 +1,6 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
-const { home, signup, postsignup, login, loginauth, foremail, forgot, forotp, changepass, authgooglecallback, catadd, catapi, cataddpost, details, cart, profile, addproductUI, addproduct, viewproduct, catproduct, oneproduct, logout, singleapi, imge, imgtest, imguplod, addtocart, addtocartget, deletecart, allproduct, singleproduct, product } = require('../controller/controller');
+const { home, signup, postsignup, login, loginauth, foremail, forgot, forotp, changepass, authgooglecallback, catadd, catapi, cataddpost, details, cart, profile, addproductUI, addproduct, viewproduct, catproduct, oneproduct, logout, singleapi, imge, imgtest, imguplod, addtocart, addtocartget, deletecart, allproduct, singleproduct, product, limitproduct, myproduct, myproductapi } = require('../controller/controller');
 const passport = require('passport');
 const auth = require('../middleware/authenticate');
 const singupschem = require('../model/singupschem');
@@ -38,6 +38,8 @@ Router.get("/oneproduct/:id", oneproduct)
 Router.get('/singleapi/:key', singleapi)
 // ----------------------------------------------------------------
 Router.get('/profile', profile)
+Router.get('/myproduct', myproduct)
+Router.get('/myproductapi', myproductapi)
 Router.get('/img', imge)
 Router.get('/imgss', imgtest)
 Router.post('/img', uploadIMG, imguplod)
@@ -49,8 +51,9 @@ Router.get('/like',(req,res)=>{
 })
 // Add to Cart
 Router.get('/cart', auth, cart)
-Router.post('/addtocart', addtocart)
-Router.get('/addtocart',addtocartget)
-Router.get('/deleteid/:id',deletecart)
+Router.post('/addtocart',auth , addtocart)
+Router.get('/addtocart', auth ,addtocartget)
+Router.get('/deleteid/:id',auth,deletecart)
 Router.get('/allproduct',allproduct)
+Router.get('/limitproduct/:id',limitproduct)
 module.exports = Router

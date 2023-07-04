@@ -144,11 +144,14 @@
             </div>
         </header>
         <main>
-            <form action="/catadd" method="post">
-                <input type="text" name="img" placeholder="img url">
-                <input type="text" name="catname" placeholder="cat name">
-                <input type="submit">
-            </form>
+            <div class="myproduct">
+            <div class="container">
+                <div class="row">
+                    <div class="products main flexwrap" id="Myproduct"></div>
+                </div>
+            </div>
+
+            </div>
         </main>
         <footer>
             <div class="newsletter">
@@ -307,19 +310,55 @@
     <script>
         let productNo = localStorage.getItem('cartNumber')
                 document.getElementById('numbercount').innerText = productNo
+                async function myprod() {
+            let req = await fetch(`http://localhost:9999/myproductapi`)
+            let data = await req.json();
+            console.log(data);
+            let html = ``;
+            for (let i = 0; i < data.length; i++) {
+                let img = data[i].img
+                let productname = data[i].productname
+                let currentprice = data[i].currentprice
+                let discount = data[i].discount
+                let fakeprice = data[i].fakeprice
+                let id = data[i]._id
+                const element = data[i];
+                html += `<div class="item">
+                    <div class="media">
+                        <div class="thumbnail object-cover">
+                            <a href="/single-product" onclick="node('${id}')">
+                                <img src="${img}" alt="">
+                            </a>
+                        </div>
+                        <div class="hoverable">
+                            <ul>
+                                <li class="active"><a href="#"><i class="ri-heart-line"></i></a></li>
+                                <li><a href="#"><i class="ri-eye-line"></i></a></li>
+                                <li><a href="#"><i class="ri-shuffle-line"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="discount circle flexcenter">
+                            <span>${discount}%</span>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <div class="rating">
+                            <div class="stars"></div>
+                            <span class="mini-text">(2,155)</span>
+                        </div>
+                        <h3 class="main-links"><a href="#">${productname}</a></h3>
+                        <div class="price">
+                            <span class="current">$${currentprice}.99</span>
+                            <span class="normal mini-text">$${fakeprice}.98</span>
+                        </div>
+                    </div>
+                </div>`
+            }
+            document.getElementById('Myproduct').innerHTML = html
+
+            }
+            myprod()
     </script>
 </body>
 
-</html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
 </html>

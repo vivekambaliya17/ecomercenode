@@ -177,7 +177,7 @@ let viewproduct = async (req, res) => {
 }
 let catproduct = async (req, res) => {
     let { catname, price, discounts } = req.query
-    console.log(catname + price, discounts)
+    console.log(catname , price, discounts)
 
     // console.log(catname);
     // console.log(price);
@@ -321,4 +321,25 @@ let singleproduct = (req, res) => {
 let product = (req, res) => {
     res.render('product')
 }
-module.exports = { home, signup, postsignup, login, loginauth, forgot, foremail, forotp, changepass, authgooglecallback, catadd, catapi, cataddpost, details, cart, profile, addproductUI, addproduct, viewproduct, catproduct, oneproduct, logout, singleapi, imge, imgtest, imguplod, addtocart, addtocartget, deletecart, allproduct, singleproduct, product }
+let limitproduct = async(req, res) => {
+    try {
+        let limit = req.params.id
+        console.log(limit);
+        let Lmitproduct = await productschem.find().sort({"currentprice": 1}).limit(4).skip(limit)
+        res.send(Lmitproduct)
+        
+    } catch (error) {
+        console.log(error);
+    }
+
+}
+let myproduct = (req,res)=>{
+    res.render('myproduct')
+}
+let myproductapi = async(req,res)=>{
+
+    let MYproduct = await productschem.find({userid : req.session.passport.user})
+    console.log(MYproduct);
+    res.send(MYproduct)
+}
+module.exports = { home, signup, postsignup, login, loginauth, forgot, foremail, forotp, changepass, authgooglecallback, catadd, catapi, cataddpost, details, cart, profile, addproductUI, addproduct, viewproduct, catproduct, oneproduct, logout, singleapi, imge, imgtest, imguplod, addtocart, addtocartget, deletecart, allproduct, singleproduct, product , limitproduct ,myproduct , myproductapi}
